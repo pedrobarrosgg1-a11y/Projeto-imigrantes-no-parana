@@ -2,41 +2,67 @@
 <html lang="pt-br">
   <head>
     <link rel="stylesheet" href="style.css" />
+
+    <script src="script.js" defer></script>
+
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <title>Novas Raízes no Paraná</title>
   </head>
   <body>
     <header>
-      <div class="cabecalho">
+      <div class="header">
         <h1>Novas Raízes no Paraná</h1>
-        <button class="theme" type="button" aria-label="Alternar o Tema">
-          <img src="/assets/icons/light_mode.svg" alt="Alternar o tema" />
-        </button>
+        <button
+  class="theme"
+  type="button"
+  aria-label="Ativar tema escuro"
+  title="Ativar tema escuro"
+>
+  <img
+    src="./assets/icons/dark_mode.svg"
+    alt=""
+    class="theme-icon"
+  />
+</button>
       </div>
     </header>
-    <aside class="sidebar">
-      <nav class="menu">
-        <a href="#">home</a>
+        <aside id="sidebar" class="sidebar">
+          <nav class="menu" aria-label="Navegação principal">
+            <a class="menu-link" href="#apresentacao">
+              <img src="/assets/icons/home.svg" alt="" />
+              <span class="menu-label">Home</span>
+            </a>
 
-        <a href="#apresentacao">apresentacao</a>
+            <a class="menu-link" href="#introducao">
+              <img src="/assets/icons/introduction.svg" alt="">
+              <span class="menu-label">Introdução</span>
+            </a>
 
-        <a href="#introducao">Introdução</a>
+            <hr />
 
-        <a href="#venezuela">
-          <img src="/assets/icons/venezuela.svg" alt="flag for venezuela" />
-        </a>
+            <a class="menu-link" href="#venezuela">
+              <img src="/assets/icons/venezuela.svg" alt="" />
+              <span class="menu-label">Venezuela</span>
+            </a>
 
-        <a href="#haiti">
-          <img src="/assets/icons/haiti.svg" alt="flag for haiti" />
-        </a>
+            <a class="menu-link" href="#haiti">
+              <img src="/assets/icons/haiti.svg" alt="" />
+              <span class="menu-label">Haiti</span>
+            </a>
 
-        <a href="#republica-dominicana">
-          <img
-            src="/assets/icons/dominican-republic.svg"
-            alt="flag for dominican-republic"
-          />
-        </a>
+            <a class="menu-link" href="#republica-dominicana">
+              <img src="/assets/icons/dominican-republic.svg" alt="" />
+              <span class="menu-label">República Dominicana</span>
+            </a>
+
+            <a class="menu-link menu-info" href="#footer">
+              <img src="/assets/icons/info.svg" alt="" />
+              <span class="menu-label">Informações</span>
+            </a>
+          </nav>
+        </aside>
       </nav>
     </aside>
     <main class="content">
@@ -147,7 +173,7 @@
       </section>
     </main>
 
-    <footer class="footer">
+    <footer id="footer" class="footer">
       <p>Projeto escolar “Novas Raízes no Paraná” • Educação e diversidade</p>
     </footer>
   </body>
