@@ -11,8 +11,8 @@
   --sidebar-fechada: 76px;
   --sidebar-aberta: 240px;
 
+  --verde: #3f944d;
   --azul: #1976d2;
-  --azul-claro: #42a5f5;
 
   /* Tema claro */
 
@@ -162,7 +162,8 @@ img {
   padding: 0 clamp(16px, 3vw, 32px);
 
   background-color: var(--cor-superficie);
-  border-bottom: 4px solid var(--azul);
+  border-bottom: 4px solid;
+  border-image: linear-gradient(to right, #1976d2, #3f944d) 1;
 
   box-shadow: var(--sombra-header);
 
@@ -355,29 +356,6 @@ img {
 }
 
 /* ==================================================
-   ÍCONE DA INTRODUÇÃO
-================================================== */
-
-.letter-icon {
-  width: 27px;
-  height: 27px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  flex-shrink: 0;
-
-  color: var(--azul);
-
-  font-size: 13px;
-  font-weight: 700;
-
-  border: 2px solid var(--azul);
-  border-radius: 50%;
-}
-
-/* ==================================================
    TEXTO DA SIDEBAR
 ================================================== */
 
@@ -428,8 +406,8 @@ img {
   margin-top: auto;
   padding-top: 14px;
 
+  border: 0;
   border-top: 1px solid var(--cor-borda);
-  border-radius: 0;
 }
 
 /* ==================================================
@@ -561,7 +539,7 @@ img {
 
   background: linear-gradient(
     180deg,
-    var(--cor-destaque-principal, var(--azul-claro)),
+    var(--cor-destaque-principal, var(--verde)),
     var(--cor-destaque-secundaria, var(--azul))
   );
 
