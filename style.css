@@ -1333,3 +1333,7 @@ html[data-theme='dark'] .republica-dominicana {
     animation-iteration-count: 1 !important;
   }
 }
+
+.ccm {
+  width: 34px;
+}
