@@ -41,7 +41,7 @@ function ativarTema(tema) {
   document.documentElement.dataset.theme = tema;
 
   if (tema === 'dark') {
-    iconeTema.src = './assets/icons/light_mode.svg';
+    iconeTema.src = './assets/icons/lightmode.svg';
 
     botaoTema.setAttribute('aria-label', 'Ativar tema claro');
     botaoTema.setAttribute('title', 'Ativar tema claro');
