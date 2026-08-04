@@ -2,7 +2,7 @@
 
 /* 
    VARIÁVEIS GERAIS
- */
+*/
 
 :root {
   font-family: 'Roboto', sans-serif;
@@ -11,7 +11,8 @@
   --sidebar-fechada: 72px;
   --sidebar-aberta: 230px;
 
-  --azul: rgb(25, 118, 210);
+  --azul: #1976d2;
+  --amarelo: #1976d2;
 
   /* Tema claro */
 
@@ -25,6 +26,13 @@
   --cor-footer: #eeeeee;
   --cor-botao: #ffffff;
 
+  /* Estados da sidebar desktop */
+
+  --cor-item-ativo: #e4f0ff;
+  --cor-texto-ativo: #0d5ba7;
+  --cor-item-hover: #e4f0ff;
+  --cor-texto-hover: #0d5ba7;
+
   /* Sidebar mobile acrílica */
 
   --cor-sidebar-mobile: rgba(255, 255, 255, 0.72);
@@ -35,7 +43,7 @@
 
 /* 
    TEMA ESCURO
- */
+*/
 
 html[data-theme='dark'] {
   color-scheme: dark;
@@ -50,6 +58,13 @@ html[data-theme='dark'] {
   --cor-footer: #181818;
   --cor-botao: #292929;
 
+  /* Estados da sidebar desktop no modo escuro */
+
+  --cor-item-ativo: #162f49;
+  --cor-texto-ativo: #80bfff;
+  --cor-item-hover: #162f49;
+  --cor-texto-hover: #80bfff;
+
   /* Sidebar mobile no tema escuro */
 
   --cor-sidebar-mobile: rgba(24, 24, 24, 0.76);
@@ -60,7 +75,7 @@ html[data-theme='dark'] {
 
 /* 
    CONFIGURAÇÕES GERAIS
- */
+*/
 
 * {
   box-sizing: border-box;
@@ -84,7 +99,7 @@ body {
 
 /* 
    HEADER
- */
+*/
 
 .header {
   position: fixed;
@@ -119,7 +134,7 @@ body {
 
 /* 
    BOTÃO DE TEMA
- */
+*/
 
 .theme {
   width: 42px;
@@ -171,7 +186,7 @@ body {
 
 /* 
    SIDEBAR DESKTOP
- */
+*/
 
 .sidebar {
   position: fixed;
@@ -206,7 +221,7 @@ body {
 
 /* 
    MENU
- */
+*/
 
 .menu {
   width: 100%;
@@ -218,6 +233,8 @@ body {
 }
 
 .menu-link {
+  position: relative;
+
   width: 100%;
   min-height: 46px;
 
@@ -238,12 +255,8 @@ body {
   transition:
     background-color 200ms ease,
     color 200ms ease,
+    box-shadow 200ms ease,
     transform 200ms ease;
-}
-
-.menu-link:hover {
-  color: var(--azul);
-  background-color: var(--cor-hover-menu);
 }
 
 .menu-link:active {
@@ -266,7 +279,7 @@ body {
 
 /* 
    ÍCONE DA INTRODUÇÃO
- */
+*/
 
 .letter-icon {
   width: 28px;
@@ -288,7 +301,7 @@ body {
 
 /* 
    TEXTO DA SIDEBAR
- */
+*/
 
 .menu-label {
   opacity: 0;
@@ -312,7 +325,7 @@ body {
 
 /* 
    LINHA SEPARADORA
- */
+*/
 
 .menu hr {
   width: 100%;
@@ -325,7 +338,7 @@ body {
 
 /* 
    BOTÃO DE INFORMAÇÕES
- */
+*/
 
 .menu-info {
   margin-top: auto;
@@ -336,8 +349,92 @@ body {
 }
 
 /* 
+   EFEITOS DA SIDEBAR NO COMPUTADOR
+*/
+
+@media (min-width: 701px) {
+  /*
+    Os links encostam na lateral esquerda da sidebar,
+    permitindo que a faixa colorida apareça no canto.
+  */
+
+  .menu-link {
+    width: calc(100% + 12px);
+
+    margin-left: -12px;
+    padding-left: 22px;
+
+    border-radius: 0 9px 9px 0;
+  }
+
+  /*
+    Item da página ou seção atual:
+    fundo azul claro e faixa azul.
+  */
+
+  .menu-link.active,
+  .menu-link[aria-current='page'] {
+    color: var(--cor-texto-ativo);
+    font-weight: 600;
+
+    background-color: var(--cor-item-ativo);
+
+    box-shadow: inset 4px 0 0 var(--azul);
+  }
+
+  /*
+    Item em que o mouse está:
+    fundo amarelo claro e faixa amarela.
+  */
+
+  .menu-link:hover {
+    color: var(--cor-texto-hover);
+
+    background-color: var(--cor-item-hover);
+
+    box-shadow: inset 4px 0 0 var(--amarelo);
+  }
+
+  /*
+    O amarelo aparece até quando o mouse passa
+    sobre o item que já está ativo.
+  */
+
+  .menu-link.active:hover,
+  .menu-link[aria-current='page']:hover {
+    color: var(--cor-texto-hover);
+
+    background-color: var(--cor-item-hover);
+
+    box-shadow: inset 4px 0 0 var(--amarelo);
+  }
+
+  /*
+    Pequeno movimento no ícone durante o hover.
+  */
+
+  .menu-link img,
+  .letter-icon {
+    transition:
+      transform 200ms ease,
+      border-color 200ms ease,
+      color 200ms ease;
+  }
+
+  .menu-link:hover img,
+  .menu-link:hover .letter-icon {
+    transform: translateX(2px);
+  }
+
+  .menu-link:hover .letter-icon {
+    color: var(--amarelo);
+    border-color: var(--amarelo);
+  }
+}
+
+/* 
    CONTEÚDO PRINCIPAL
- */
+*/
 
 .content {
   min-height: 100vh;
@@ -387,7 +484,7 @@ body {
 
 /* 
    CARDS
- */
+*/
 
 .card,
 .aluno {
@@ -425,7 +522,7 @@ body {
 
 /* 
    FOOTER
- */
+*/
 
 .footer {
   margin-left: var(--sidebar-fechada);
@@ -452,12 +549,12 @@ body {
 
 /* 
    CELULAR
- */
+*/
 
 @media (max-width: 700px) {
   /* 
      HEADER MOBILE
-   */
+  */
 
   .header {
     padding: 0 12px;
@@ -479,7 +576,7 @@ body {
 
   /*
      SIDEBAR MOBILE ACRÍLICA
- */
+  */
 
   .sidebar,
   .sidebar:hover,
@@ -517,7 +614,7 @@ body {
 
   /* 
      MENU MOBILE
-   */
+  */
 
   .menu {
     width: 100%;
@@ -584,7 +681,7 @@ body {
 
      Separa início/introdução
      dos países.
- */
+  */
 
   .menu hr {
     display: block;
@@ -607,7 +704,7 @@ body {
 
      Separa os países do botão
      de informações.
-   */
+  */
 
   .menu-info {
     position: relative;
@@ -642,7 +739,7 @@ body {
 
   /* 
      CONTEÚDO MOBILE
-   */
+  */
 
   .content,
   .sidebar:hover ~ .content,
@@ -657,7 +754,7 @@ body {
 
   /* 
      FOOTER MOBILE
-   */
+  */
 
   .footer,
   .sidebar:hover ~ .footer,
@@ -672,7 +769,7 @@ body {
 
 /* 
    CELULARES MUITO PEQUENOS
- */
+*/
 
 @media (max-width: 380px) {
   .header h1 {
