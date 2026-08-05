@@ -1,0 +1,313 @@
+/* 
+   header
+ */
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  z-index: 1000;
+
+  height: var(--altura-header);
+
+  display: flex;
+  align-items: center;
+  gap: 18px;
+
+  padding: 0 clamp(18px, 3vw, 34px);
+
+  overflow: hidden;
+
+  background:
+    linear-gradient(
+      110deg,
+      rgba(25, 118, 210, 0.07),
+      transparent 40%,
+      rgba(63, 148, 77, 0.07)
+    ),
+    var(--cor-superficie);
+
+  border-bottom: 1px solid var(--cor-borda);
+
+  box-shadow: var(--sombra-header);
+
+  transition:
+    background-color 250ms ease,
+    border-color 250ms ease,
+    box-shadow 250ms ease;
+}
+
+/* Linha colorida inferior */
+
+.header::after {
+  content: '';
+
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  height: 4px;
+
+  background: linear-gradient(
+    90deg,
+    var(--azul) 0%,
+    #2786d8 38%,
+    var(--verde) 72%,
+    #59ad65 100%
+  );
+}
+
+/* Brilho decorativo do header */
+
+.header::before {
+  content: '';
+
+  position: absolute;
+  top: -95px;
+  left: 120px;
+
+  width: 280px;
+  height: 180px;
+
+  pointer-events: none;
+
+  background: radial-gradient(
+    circle,
+    rgba(25, 118, 210, 0.14),
+    transparent 68%
+  );
+
+  border-radius: 50%;
+}
+
+/* CCM + nome do projeto */
+
+.header-brand {
+  position: relative;
+  z-index: 1;
+
+  min-width: 0;
+
+  display: flex;
+  align-items: center;
+  gap: 13px;
+
+  color: inherit;
+  text-decoration: none;
+
+  border-radius: 12px;
+}
+
+.header-brand:focus-visible {
+  outline: 3px solid var(--azul);
+  outline-offset: 4px;
+}
+
+/* CCM */
+
+.header-logo {
+  width: 48px;
+  height: 48px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  padding: 6px;
+
+  background:
+    linear-gradient(var(--cor-superficie), var(--cor-superficie)) padding-box,
+    linear-gradient(135deg, var(--azul), var(--verde)) border-box;
+
+  border: 2px solid transparent;
+  border-radius: 14px;
+
+  box-shadow:
+    0 5px 15px rgba(15, 23, 42, 0.13),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+
+  transition:
+    transform 220ms ease,
+    box-shadow 220ms ease;
+}
+
+.header-brand:hover .header-logo {
+  box-shadow:
+    0 9px 22px rgba(25, 118, 210, 0.2),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+
+  transform: translateY(-2px) rotate(-2deg);
+}
+
+.ccm {
+  width: 35px;
+  height: 35px;
+
+  object-fit: contain;
+
+  transition: transform 250ms ease;
+}
+
+.header-brand:hover .ccm {
+  transform: scale(1.06);
+}
+
+/* Texto do header */
+
+.header-texto {
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  padding-left: 13px;
+
+  border-left: 1px solid var(--cor-borda);
+}
+
+.header-subtitulo {
+  margin-bottom: 3px;
+
+  color: var(--verde);
+
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.header h1 {
+  margin: 0;
+
+  overflow: hidden;
+
+  color: var(--cor-texto);
+
+  font-size: clamp(20px, 2vw, 27px);
+  font-weight: 700;
+  line-height: 1.12;
+  letter-spacing: -0.035em;
+
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.header h1::after {
+  content: '';
+
+  display: inline-block;
+
+  width: 6px;
+  height: 6px;
+
+  margin-bottom: 3px;
+  margin-left: 8px;
+
+  background-color: var(--verde);
+  border-radius: 50%;
+
+  box-shadow: 0 0 0 4px rgba(63, 148, 77, 0.12);
+}
+
+/* 
+   Botão Theme
+ */
+
+.theme {
+  position: relative;
+  z-index: 1;
+
+  width: 44px;
+  height: 44px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  margin-left: auto;
+  padding: 0;
+
+  overflow: hidden;
+
+  background:
+    linear-gradient(var(--cor-botao), var(--cor-botao)) padding-box,
+    linear-gradient(135deg, rgba(25, 118, 210, 0.7), rgba(63, 148, 77, 0.7))
+      border-box;
+
+  border: 1px solid transparent;
+  border-radius: 32px;
+
+  box-shadow:
+    0 5px 14px rgba(15, 23, 42, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+
+  cursor: pointer;
+
+  -webkit-tap-highlight-color: transparent;
+
+  transition:
+    background-color 200ms ease,
+    border-color 200ms ease,
+    box-shadow 200ms ease,
+    transform 200ms ease;
+}
+
+.theme::before {
+  content: '';
+
+  position: absolute;
+
+  width: 32px;
+  height: 32px;
+
+  background-color: rgba(255, 193, 7, 0.09);
+  border-radius: 50%;
+
+  transform: scale(0);
+
+  transition: transform 220ms ease;
+}
+
+.theme:hover {
+  box-shadow:
+    0 8px 20px rgba(25, 118, 210, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
+
+  transform: translateY(-2px);
+}
+
+.theme:hover::before {
+  transform: scale(1);
+}
+
+.theme:active {
+  transform: scale(0.94);
+}
+
+.theme:focus-visible {
+  outline: 3px solid var(--azul);
+  outline-offset: 3px;
+}
+
+.theme-icon {
+  position: relative;
+  z-index: 1;
+
+  width: 24px;
+  height: 24px;
+
+  transition: transform 350ms ease;
+}
+
+.theme:hover .theme-icon {
+  transform: rotate(25deg) scale(1.05);
+}

@@ -1,0 +1,142 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&display=swap');
+
+/* 
+   Varieaveis Geral
+ */
+
+:root {
+  font-family: 'Roboto', sans-serif;
+
+  --altura-header: 72px;
+  --sidebar-fechada: 76px;
+  --sidebar-aberta: 240px;
+
+  --verde: #3f944d;
+  --azul: #1976d2;
+
+  /* Tema claro */
+
+  --cor-fundo: #f5f7fb;
+  --cor-superficie: #ffffff;
+  --cor-sidebar: #f8fafc;
+
+  --cor-texto: #18202a;
+  --cor-texto-secundario: #536171;
+  --cor-texto-suave: #758293;
+
+  --cor-borda: #e1e7ef;
+  --cor-borda-forte: #cbd5e1;
+
+  --cor-footer: #eaf0f7;
+  --cor-botao: #ffffff;
+
+  /* Painéis e cards */
+
+  --cor-card-destaque: #edf6ff;
+  --cor-card-aluno: #f0f7ff;
+
+  --sombra-header: 0 8px 28px rgba(15, 23, 42, 0.1);
+  --sombra-card: 0 6px 20px rgba(15, 23, 42, 0.06);
+  --sombra-card-hover: 0 14px 34px rgba(15, 23, 42, 0.12);
+
+  /* Estados da sidebar desktop */
+
+  --cor-item-ativo: #e4f0ff;
+  --cor-texto-ativo: #0d5ba7;
+
+  --cor-item-hover: #e4f0ff;
+  --cor-texto-hover: #0d5ba7;
+
+  /* Sidebar mobile acrílica */
+
+  --cor-sidebar-mobile: rgba(255, 255, 255, 0.75);
+  --cor-borda-mobile: rgba(255, 255, 255, 0.85);
+  --cor-hover-mobile: rgba(25, 118, 210, 0.14);
+
+  --sombra-sidebar-mobile:
+    0 10px 30px rgba(15, 23, 42, 0.17), 0 2px 8px rgba(15, 23, 42, 0.08);
+}
+
+/* 
+   dark mode
+ */
+
+html[data-theme='dark'] {
+  color-scheme: dark;
+
+  --cor-fundo: #0f1115;
+  --cor-superficie: #181c23;
+  --cor-sidebar: #15181e;
+
+  --cor-texto: #f2f5f8;
+  --cor-texto-secundario: #c2cad4;
+  --cor-texto-suave: #929dac;
+
+  --cor-borda: #2c333d;
+  --cor-borda-forte: #3a4451;
+
+  --cor-footer: #15191f;
+  --cor-botao: #20252d;
+
+  /* Painéis e cards */
+
+  --cor-card-destaque: #172637;
+  --cor-card-aluno: #14263a;
+
+  --sombra-header: 0 8px 30px rgba(0, 0, 0, 0.42);
+  --sombra-card: 0 8px 24px rgba(0, 0, 0, 0.22);
+  --sombra-card-hover: 0 16px 38px rgba(0, 0, 0, 0.38);
+
+  /* Estados da sidebar desktop */
+
+  --cor-item-ativo: #162f49;
+  --cor-texto-ativo: #80bfff;
+
+  --cor-item-hover: #162f49;
+  --cor-texto-hover: #80bfff;
+
+  /* Sidebar mobile */
+
+  --cor-sidebar-mobile: rgba(24, 28, 35, 0.8);
+  --cor-borda-mobile: rgba(255, 255, 255, 0.12);
+  --cor-hover-mobile: rgba(74, 144, 226, 0.22);
+
+  --sombra-sidebar-mobile:
+    0 14px 36px rgba(0, 0, 0, 0.48), 0 3px 10px rgba(0, 0, 0, 0.25);
+}
+
+/* 
+   geral config
+ */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+
+  overflow-x: hidden;
+
+  background-color: var(--cor-fundo);
+  color: var(--cor-texto);
+
+  transition:
+    background-color 250ms ease,
+    color 250ms ease;
+}
+
+button,
+a {
+  font: inherit;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}

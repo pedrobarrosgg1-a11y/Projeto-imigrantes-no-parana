@@ -1,0 +1,437 @@
+/* 
+   Celular (mobile)
+ */
+
+@media (max-width: 700px) {
+  :root {
+    --altura-header: 64px;
+  }
+
+  /* Header */
+
+  .header {
+    gap: 10px;
+
+    padding: 0 13px;
+  }
+
+  .header::before {
+    top: -105px;
+    left: 65px;
+  }
+
+  .header::after {
+    height: 3px;
+  }
+
+  .header-brand {
+    min-width: 0;
+    gap: 9px;
+  }
+
+  .header-logo {
+    width: 42px;
+    height: 42px;
+
+    padding: 5px;
+
+    border-radius: 12px;
+  }
+
+  .ccm {
+    width: 31px;
+    height: 31px;
+  }
+
+  .header-texto {
+    padding-left: 10px;
+  }
+
+  .header-subtitulo {
+    margin-bottom: 2px;
+
+    font-size: 8px;
+    letter-spacing: 0.1em;
+  }
+
+  .header h1 {
+    max-width: calc(100vw - 130px);
+
+    font-size: 18px;
+  }
+
+  .header h1::after {
+    display: none;
+  }
+
+  .theme {
+    width: 39px;
+    height: 39px;
+
+    border-radius: 32px;
+  }
+
+  .theme-icon {
+    width: 22px;
+    height: 22px;
+  }
+
+  /* Sidebar mobile acrílica */
+
+  .sidebar,
+  .sidebar:hover,
+  .sidebar:focus-within {
+    top: auto;
+    left: 50%;
+    right: auto;
+    bottom: calc(12px + env(safe-area-inset-bottom));
+
+    width: calc(100% - 24px);
+    max-width: 520px;
+    height: 68px;
+
+    padding: 7px 8px;
+
+    overflow: hidden;
+
+    background-color: var(--cor-sidebar-mobile);
+
+    border: 1px solid var(--cor-borda-mobile);
+    border-radius: 36px;
+
+    box-shadow: var(--sombra-sidebar-mobile);
+
+    backdrop-filter: blur(18px) saturate(160%);
+    -webkit-backdrop-filter: blur(18px) saturate(160%);
+
+    transform: translateX(-50%);
+
+    transition:
+      background-color 250ms ease,
+      border-color 250ms ease,
+      box-shadow 250ms ease;
+  }
+
+  /* Menu mobile */
+
+  .menu {
+    position: relative;
+
+    width: 100%;
+    height: 100%;
+
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    align-items: center;
+
+    gap: 0;
+  }
+
+  .menu-link {
+    position: relative;
+    z-index: 1;
+
+    width: 100%;
+    height: 48px;
+    min-width: 0;
+    min-height: 48px;
+    max-width: none;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 0;
+
+    padding: 9px 0;
+
+    border-radius: 24px;
+  }
+
+  .menu-link.active,
+  .menu-link[aria-current='page'] {
+    color: var(--azul);
+    background-color: var(--cor-hover-mobile);
+  }
+
+  .menu-link:hover,
+  .menu-link:focus-visible {
+    color: var(--azul);
+    background-color: var(--cor-hover-mobile);
+  }
+
+  .menu-link:active {
+    transform: scale(0.9);
+  }
+
+  .menu-link img {
+    width: 25px;
+    height: 25px;
+  }
+
+  .letter-icon {
+    width: 25px;
+    height: 25px;
+
+    font-size: 10px;
+  }
+
+  .menu-label {
+    display: none;
+  }
+
+  /* Primeira linha separadora */
+
+  .menu hr {
+    position: absolute;
+    top: 50%;
+    left: 20%;
+    z-index: 0;
+
+    display: block;
+
+    width: 1px;
+    height: 30px;
+
+    margin: 0;
+
+    pointer-events: none;
+
+    background-color: var(--cor-borda);
+
+    border: 0;
+    border-radius: 10px;
+
+    transform: translate(-50%, -50%);
+  }
+
+  /* Segunda linha separadora */
+
+  .menu-info {
+    position: relative;
+
+    margin: 0;
+    padding: 9px 0;
+
+    overflow: visible;
+
+    border: 0;
+    border-radius: 24px;
+  }
+
+  .menu-info::before {
+    content: '';
+
+    position: absolute;
+    top: 50%;
+    left: 0;
+
+    width: 1px;
+    height: 30px;
+
+    pointer-events: none;
+
+    background-color: var(--cor-borda);
+
+    border-radius: 10px;
+
+    transform: translate(-50%, -50%);
+  }
+
+  /* Conteúdo mobile */
+
+  .content,
+  .sidebar:hover ~ .content,
+  .sidebar:focus-within ~ .content {
+    margin-left: 0;
+
+    padding-top: 92px;
+    padding-right: 18px;
+    padding-bottom: 120px;
+    padding-left: 18px;
+  }
+
+  .content section {
+    margin-bottom: 48px;
+  }
+
+  .content h2 {
+    margin-bottom: 18px;
+
+    font-size: 25px;
+  }
+
+  .content h2::before {
+    width: 5px;
+    height: 24px;
+  }
+
+  .content p {
+    font-size: 15.5px;
+    line-height: 1.7;
+  }
+
+  /* Painéis */
+
+  .apresentacao,
+  .introducao {
+    padding: 24px 21px;
+
+    border-radius: 17px;
+  }
+
+  .apresentacao::after,
+  .introducao::after {
+    top: -90px;
+    right: -90px;
+  }
+
+  /* Seções dos países */
+
+  .venezuela,
+  .haiti,
+  .republica-dominicana {
+    gap: 14px;
+
+    padding: 22px 18px;
+
+    border-radius: 18px;
+  }
+
+  /* Cards mobile */
+
+  .card,
+  .aluno {
+    min-height: auto;
+
+    padding: 22px 20px;
+
+    border-left-width: 4px;
+    border-radius: 14px;
+  }
+
+  .card:hover,
+  .aluno:hover {
+    transform: translateY(-2px);
+  }
+
+  /* Footer mobile */
+
+  .footer,
+  .sidebar:hover ~ .footer,
+  .sidebar:focus-within ~ .footer {
+    margin-left: 0;
+    margin-bottom: 92px;
+
+    padding: 26px 20px;
+  }
+}
+
+/* 
+   CELULARES MUITO PEQUENOS
+ */
+
+@media (max-width: 380px) {
+  .header {
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+
+  .header-logo {
+    width: 39px;
+    height: 39px;
+  }
+
+  .ccm {
+    width: 28px;
+    height: 28px;
+  }
+
+  .header-texto {
+    padding-left: 8px;
+  }
+
+  .header-subtitulo {
+    display: none;
+  }
+
+  .header h1 {
+    max-width: calc(100vw - 120px);
+
+    font-size: 16px;
+  }
+
+  .theme {
+    width: 37px;
+    height: 37px;
+  }
+
+  .sidebar,
+  .sidebar:hover,
+  .sidebar:focus-within {
+    width: calc(100% - 16px);
+
+    padding-right: 5px;
+    padding-left: 5px;
+
+    border-radius: 32px;
+  }
+
+  .menu {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 0;
+  }
+
+  .menu-link {
+    height: 46px;
+    min-height: 46px;
+
+    padding: 8px 0;
+  }
+
+  .menu-link img {
+    width: 22px;
+    height: 22px;
+  }
+
+  .letter-icon {
+    width: 22px;
+    height: 22px;
+
+    font-size: 10px;
+  }
+
+  .menu hr {
+    height: 27px;
+  }
+
+  .menu-info {
+    margin: 0;
+  }
+
+  .menu-info::before {
+    left: 0;
+
+    height: 27px;
+  }
+
+  .content,
+  .sidebar:hover ~ .content,
+  .sidebar:focus-within ~ .content {
+    padding-right: 14px;
+    padding-left: 14px;
+  }
+
+  .apresentacao,
+  .introducao,
+  .venezuela,
+  .haiti,
+  .republica-dominicana {
+    padding: 20px 16px;
+  }
+
+  .card,
+  .aluno {
+    padding: 20px 17px;
+  }
+}
