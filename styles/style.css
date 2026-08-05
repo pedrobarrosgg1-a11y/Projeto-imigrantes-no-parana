@@ -7,7 +7,7 @@
 :root {
   font-family: 'Roboto', sans-serif;
 
-  --altura-header: 64px;
+  --altura-header: 72px;
   --sidebar-fechada: 76px;
   --sidebar-aberta: 240px;
 
@@ -35,7 +35,7 @@
   --cor-card-destaque: #edf6ff;
   --cor-card-aluno: #f0f7ff;
 
-  --sombra-header: 0 4px 18px rgba(15, 23, 42, 0.08);
+  --sombra-header: 0 8px 28px rgba(15, 23, 42, 0.1);
   --sombra-card: 0 6px 20px rgba(15, 23, 42, 0.06);
   --sombra-card-hover: 0 14px 34px rgba(15, 23, 42, 0.12);
 
@@ -83,7 +83,7 @@ html[data-theme='dark'] {
   --cor-card-destaque: #172637;
   --cor-card-aluno: #14263a;
 
-  --sombra-header: 0 4px 22px rgba(0, 0, 0, 0.35);
+  --sombra-header: 0 8px 30px rgba(0, 0, 0, 0.42);
   --sombra-card: 0 8px 24px rgba(0, 0, 0, 0.22);
   --sombra-card-hover: 0 16px 38px rgba(0, 0, 0, 0.38);
 
@@ -157,13 +157,22 @@ img {
 
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 18px;
 
-  padding: 0 clamp(16px, 3vw, 32px);
+  padding: 0 clamp(18px, 3vw, 34px);
 
-  background-color: var(--cor-superficie);
-  border-bottom: 4px solid;
-  border-image: linear-gradient(to right, #1976d2, #3f944d) 1;
+  overflow: hidden;
+
+  background:
+    linear-gradient(
+      110deg,
+      rgba(25, 118, 210, 0.07),
+      transparent 40%,
+      rgba(63, 148, 77, 0.07)
+    ),
+    var(--cor-superficie);
+
+  border-bottom: 1px solid var(--cor-borda);
 
   box-shadow: var(--sombra-header);
 
@@ -173,14 +182,181 @@ img {
     box-shadow 250ms ease;
 }
 
+/* Linha colorida inferior */
+
+.header::after {
+  content: '';
+
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  height: 4px;
+
+  background: linear-gradient(
+    90deg,
+    var(--azul) 0%,
+    #2786d8 38%,
+    var(--verde) 72%,
+    #59ad65 100%
+  );
+}
+
+/* Brilho decorativo do header */
+
+.header::before {
+  content: '';
+
+  position: absolute;
+  top: -95px;
+  left: 120px;
+
+  width: 280px;
+  height: 180px;
+
+  pointer-events: none;
+
+  background: radial-gradient(
+    circle,
+    rgba(25, 118, 210, 0.14),
+    transparent 68%
+  );
+
+  border-radius: 50%;
+}
+
+/* Marca: logo + nome do projeto */
+
+.header-brand {
+  position: relative;
+  z-index: 1;
+
+  min-width: 0;
+
+  display: flex;
+  align-items: center;
+  gap: 13px;
+
+  color: inherit;
+  text-decoration: none;
+
+  border-radius: 12px;
+}
+
+.header-brand:focus-visible {
+  outline: 3px solid var(--azul);
+  outline-offset: 4px;
+}
+
+/* Caixa do logo CCM */
+
+.header-logo {
+  width: 48px;
+  height: 48px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  padding: 6px;
+
+  background:
+    linear-gradient(var(--cor-superficie), var(--cor-superficie)) padding-box,
+    linear-gradient(135deg, var(--azul), var(--verde)) border-box;
+
+  border: 2px solid transparent;
+  border-radius: 14px;
+
+  box-shadow:
+    0 5px 15px rgba(15, 23, 42, 0.13),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+
+  transition:
+    transform 220ms ease,
+    box-shadow 220ms ease;
+}
+
+.header-brand:hover .header-logo {
+  box-shadow:
+    0 9px 22px rgba(25, 118, 210, 0.2),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+
+  transform: translateY(-2px) rotate(-2deg);
+}
+
+.ccm {
+  width: 35px;
+  height: 35px;
+
+  object-fit: contain;
+
+  transition: transform 250ms ease;
+}
+
+.header-brand:hover .ccm {
+  transform: scale(1.06);
+}
+
+/* Textos do header */
+
+.header-texto {
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  padding-left: 13px;
+
+  border-left: 1px solid var(--cor-borda);
+}
+
+.header-subtitulo {
+  margin-bottom: 3px;
+
+  color: var(--verde);
+
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
 .header h1 {
   margin: 0;
 
+  overflow: hidden;
+
   color: var(--cor-texto);
 
-  font-size: clamp(22px, 2.2vw, 29px);
+  font-size: clamp(20px, 2vw, 27px);
   font-weight: 700;
-  letter-spacing: -0.03em;
+  line-height: 1.12;
+  letter-spacing: -0.035em;
+
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.header h1::after {
+  content: '';
+
+  display: inline-block;
+
+  width: 6px;
+  height: 6px;
+
+  margin-bottom: 3px;
+  margin-left: 8px;
+
+  background-color: var(--verde);
+  border-radius: 50%;
+
+  box-shadow: 0 0 0 4px rgba(63, 148, 77, 0.12);
 }
 
 /* ==================================================
@@ -188,8 +364,11 @@ img {
 ================================================== */
 
 .theme {
-  width: 42px;
-  height: 42px;
+  position: relative;
+  z-index: 1;
+
+  width: 44px;
+  height: 44px;
 
   display: flex;
   align-items: center;
@@ -200,14 +379,23 @@ img {
   margin-left: auto;
   padding: 0;
 
-  background-color: var(--cor-botao);
+  overflow: hidden;
 
-  border: 1px solid var(--cor-borda);
-  border-radius: 50%;
+  background:
+    linear-gradient(var(--cor-botao), var(--cor-botao)) padding-box,
+    linear-gradient(135deg, rgba(25, 118, 210, 0.7), rgba(63, 148, 77, 0.7))
+      border-box;
 
-  box-shadow: 0 3px 10px rgba(15, 23, 42, 0.08);
+  border: 1px solid transparent;
+  border-radius: 32px;
+
+  box-shadow:
+    0 5px 14px rgba(15, 23, 42, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
 
   cursor: pointer;
+
+  -webkit-tap-highlight-color: transparent;
 
   transition:
     background-color 200ms ease,
@@ -216,12 +404,32 @@ img {
     transform 200ms ease;
 }
 
+.theme::before {
+  content: '';
+
+  position: absolute;
+
+  width: 32px;
+  height: 32px;
+
+  background-color: rgba(255, 193, 7, 0.09);
+  border-radius: 50%;
+
+  transform: scale(0);
+
+  transition: transform 220ms ease;
+}
+
 .theme:hover {
-  border-color: var(--azul);
+  box-shadow:
+    0 8px 20px rgba(25, 118, 210, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
 
-  box-shadow: 0 6px 16px rgba(25, 118, 210, 0.18);
+  transform: translateY(-2px);
+}
 
-  transform: translateY(-1px) scale(1.05);
+.theme:hover::before {
+  transform: scale(1);
 }
 
 .theme:active {
@@ -234,14 +442,17 @@ img {
 }
 
 .theme-icon {
-  width: 25px;
-  height: 25px;
+  position: relative;
+  z-index: 1;
 
-  transition: transform 300ms ease;
+  width: 24px;
+  height: 24px;
+
+  transition: transform 350ms ease;
 }
 
 .theme:hover .theme-icon {
-  transform: rotate(18deg);
+  transform: rotate(25deg) scale(1.05);
 }
 
 /* ==================================================
@@ -814,7 +1025,7 @@ html[data-theme='dark'] .republica-dominicana {
   background: linear-gradient(
     90deg,
     var(--pais-cor-principal, var(--azul)),
-    var(--pais-cor-secundaria, var(--azul-claro)),
+    var(--pais-cor-secundaria, var(--azul)),
     var(--pais-cor-terciaria, var(--azul))
   );
 
@@ -944,29 +1155,72 @@ html[data-theme='dark'] .republica-dominicana {
 ================================================== */
 
 @media (max-width: 700px) {
+  :root {
+    --altura-header: 64px;
+  }
+
   /* Header */
 
   .header {
-    height: 60px;
+    gap: 10px;
 
-    padding: 0 14px;
+    padding: 0 13px;
+  }
 
-    border-bottom-width: 3px;
+  .header::before {
+    top: -105px;
+    left: 65px;
+  }
+
+  .header::after {
+    height: 3px;
+  }
+
+  .header-brand {
+    min-width: 0;
+    gap: 9px;
+  }
+
+  .header-logo {
+    width: 42px;
+    height: 42px;
+
+    padding: 5px;
+
+    border-radius: 12px;
+  }
+
+  .ccm {
+    width: 31px;
+    height: 31px;
+  }
+
+  .header-texto {
+    padding-left: 10px;
+  }
+
+  .header-subtitulo {
+    margin-bottom: 2px;
+
+    font-size: 8px;
+    letter-spacing: 0.1em;
   }
 
   .header h1 {
-    max-width: calc(100% - 52px);
+    max-width: calc(100vw - 130px);
 
-    overflow: hidden;
+    font-size: 18px;
+  }
 
-    font-size: 19px;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+  .header h1::after {
+    display: none;
   }
 
   .theme {
-    width: 38px;
-    height: 38px;
+    width: 39px;
+    height: 39px;
+
+    border-radius: 32px;
   }
 
   .theme-icon {
@@ -1013,33 +1267,35 @@ html[data-theme='dark'] .republica-dominicana {
   /* Menu mobile */
 
   .menu {
+    position: relative;
+
     width: 100%;
     height: 100%;
 
-    display: flex;
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
     align-items: center;
-    justify-content: space-around;
 
-    gap: 2px;
+    gap: 0;
   }
 
   .menu-link {
-    width: auto;
+    position: relative;
+    z-index: 1;
+
+    width: 100%;
     height: 48px;
     min-width: 0;
     min-height: 48px;
-    max-width: 48px;
+    max-width: none;
 
     display: flex;
     align-items: center;
     justify-content: center;
 
-    flex: 1;
-
     gap: 0;
 
-    padding: 9px;
+    padding: 9px 0;
 
     border-radius: 24px;
   }
@@ -1079,19 +1335,26 @@ html[data-theme='dark'] .republica-dominicana {
   /* Primeira linha separadora */
 
   .menu hr {
+    position: absolute;
+    top: 50%;
+    left: 20%;
+    z-index: 0;
+
     display: block;
 
     width: 1px;
     height: 30px;
 
-    flex-shrink: 0;
+    margin: 0;
 
-    margin: 0 4px;
+    pointer-events: none;
 
     background-color: var(--cor-borda);
 
     border: 0;
     border-radius: 10px;
+
+    transform: translate(-50%, -50%);
   }
 
   /* Segunda linha separadora */
@@ -1099,10 +1362,8 @@ html[data-theme='dark'] .republica-dominicana {
   .menu-info {
     position: relative;
 
-    margin-top: 0;
-    margin-left: 8px;
-
-    padding-top: 9px;
+    margin: 0;
+    padding: 9px 0;
 
     overflow: visible;
 
@@ -1115,16 +1376,18 @@ html[data-theme='dark'] .republica-dominicana {
 
     position: absolute;
     top: 50%;
-    left: -7px;
+    left: 0;
 
     width: 1px;
     height: 30px;
+
+    pointer-events: none;
 
     background-color: var(--cor-borda);
 
     border-radius: 10px;
 
-    transform: translateY(-50%);
+    transform: translate(-50%, -50%);
   }
 
   /* Conteúdo mobile */
@@ -1221,8 +1484,38 @@ html[data-theme='dark'] .republica-dominicana {
 ================================================== */
 
 @media (max-width: 380px) {
+  .header {
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+
+  .header-logo {
+    width: 39px;
+    height: 39px;
+  }
+
+  .ccm {
+    width: 28px;
+    height: 28px;
+  }
+
+  .header-texto {
+    padding-left: 8px;
+  }
+
+  .header-subtitulo {
+    display: none;
+  }
+
   .header h1 {
-    font-size: 17px;
+    max-width: calc(100vw - 120px);
+
+    font-size: 16px;
+  }
+
+  .theme {
+    width: 37px;
+    height: 37px;
   }
 
   .sidebar,
@@ -1237,6 +1530,7 @@ html[data-theme='dark'] .republica-dominicana {
   }
 
   .menu {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
     gap: 0;
   }
 
@@ -1244,7 +1538,7 @@ html[data-theme='dark'] .republica-dominicana {
     height: 46px;
     min-height: 46px;
 
-    padding: 8px;
+    padding: 8px 0;
   }
 
   .menu-link img {
@@ -1261,17 +1555,14 @@ html[data-theme='dark'] .republica-dominicana {
 
   .menu hr {
     height: 27px;
-
-    margin-right: 2px;
-    margin-left: 2px;
   }
 
   .menu-info {
-    margin-left: 5px;
+    margin: 0;
   }
 
   .menu-info::before {
-    left: -4px;
+    left: 0;
 
     height: 27px;
   }
@@ -1312,9 +1603,9 @@ html[data-theme='dark'] .republica-dominicana {
   }
 }
 
-.ccm {
-  width: 34px;
-}
+/* ==================================================
+   AJUSTES DE TOQUE E FOCO
+================================================== */
 
 a:focus,
 a:active {
@@ -1322,9 +1613,5 @@ a:active {
 }
 
 a {
-  -webkit-tap-highlight-color: transparent;
-}
-
-.theme {
   -webkit-tap-highlight-color: transparent;
 }
