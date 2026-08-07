@@ -1,34 +1,16 @@
-/* 
-   footer
- */
-
-.footer {
-  margin-left: var(--sidebar-fechada);
-  padding: 30px clamp(22px, 4vw, 64px);
-
-  color: var(--cor-texto-secundario);
-  background-color: var(--cor-footer);
-
-  border-top: 1px solid var(--cor-borda);
-
-  transition:
-    margin-left 250ms ease,
-    background-color 250ms ease,
-    color 250ms ease,
-    border-color 250ms ease;
+.site-footer {
+  padding-block: 2rem;
+  border-top: 1px solid #1e293b;
+  background-color: #0f172a;
+  color: #94a3b8;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
 }
 
-.sidebar:hover ~ .footer,
-.sidebar:focus-within ~ .footer {
-  margin-left: var(--sidebar-aberta);
-}
-
-.footer p {
-  max-width: 1100px;
-
-  margin: 0 auto;
-
-  font-size: 14px;
-  line-height: 1.6;
+.site-footer__container {
   text-align: center;
+}
+
+.site-footer__credit {
+  margin-top: 0.5rem;
 }

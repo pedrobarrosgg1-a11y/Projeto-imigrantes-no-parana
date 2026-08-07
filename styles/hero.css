@@ -1,0 +1,520 @@
+/*
+  HERO — Seção introdutória
+  Estiliza somente a primeira section direta do body.
+*/
+
+/* 
+   Variáveis do Hero — Tema Claro
+    */
+
+:root {
+  --hero-fundo: #eef4ff;
+  --hero-fundo-secundario: #f8fbff;
+
+  --hero-texto: #172033;
+  --hero-texto-secundario: #536171;
+
+  --hero-badge-fundo: rgba(25, 118, 210, 0.1);
+  --hero-badge-borda: rgba(25, 118, 210, 0.25);
+  --hero-badge-texto: #0d5ba7;
+
+  --hero-gradiente-titulo: linear-gradient(
+    90deg,
+    #1976d2 0%,
+    #5b7ee8 52%,
+    #24b9c5 100%
+  );
+
+  --hero-botao: #2f7df4;
+  --hero-botao-hover: #1769dc;
+  --hero-botao-texto: #ffffff;
+
+  --hero-sombra-botao:
+    0 12px 24px rgba(25, 118, 210, 0.24), 0 4px 8px rgba(25, 118, 210, 0.14);
+}
+
+/* 
+   Variáveis do Hero — Tema Escuro
+    */
+
+html[data-theme='dark'] {
+  --hero-fundo: #101a30;
+  --hero-fundo-secundario: #0e1729;
+
+  --hero-texto: #ffffff;
+  --hero-texto-secundario: #e0e7f1;
+
+  --hero-badge-fundo: rgba(46, 125, 245, 0.16);
+  --hero-badge-borda: rgba(77, 145, 255, 0.42);
+  --hero-badge-texto: #71b5ff;
+
+  --hero-gradiente-titulo: linear-gradient(
+    90deg,
+    #579dff 0%,
+    #7183f3 52%,
+    #38c9cf 100%
+  );
+
+  --hero-botao: #347ff2;
+  --hero-botao-hover: #4b91ff;
+  --hero-botao-texto: #ffffff;
+
+  --hero-sombra-botao:
+    0 16px 28px rgba(20, 91, 203, 0.3), 0 6px 12px rgba(0, 0, 0, 0.28);
+}
+
+/* 
+   Estrutura principal do Hero
+    */
+
+body > section:first-of-type {
+  position: relative;
+
+  width: 100%;
+
+  /*
+    O Header já ocupa 72px da tela.
+
+    Por isso o Hero ocupa somente o espaço
+    restante da viewport.
+  */
+
+  min-height: calc(100vh - var(--altura-header));
+  min-height: calc(100svh - var(--altura-header));
+  min-height: calc(100dvh - var(--altura-header));
+
+  margin: 0;
+
+  display: grid;
+  place-items: center;
+
+  padding: clamp(2.5rem, 6vh, 4.5rem) 1.5rem;
+
+  overflow: hidden;
+
+  isolation: isolate;
+
+  background-color: var(--hero-fundo);
+
+  background-image:
+    radial-gradient(
+      circle at 50% 12%,
+      rgba(66, 130, 235, 0.12),
+      transparent 30rem
+    ),
+    linear-gradient(
+      180deg,
+      var(--hero-fundo) 0%,
+      var(--hero-fundo-secundario) 100%
+    );
+
+  color: var(--hero-texto);
+
+  transition:
+    background-color 250ms ease,
+    color 250ms ease;
+}
+
+/* 
+   Brilho decorativo
+    */
+
+body > section:first-of-type::before {
+  content: '';
+
+  position: absolute;
+  z-index: -1;
+
+  top: -34rem;
+  left: 50%;
+
+  width: min(72vw, 58rem);
+
+  aspect-ratio: 1;
+
+  border-radius: 50%;
+
+  background-color: rgba(56, 133, 246, 0.13);
+
+  filter: blur(7rem);
+
+  transform: translateX(-50%);
+
+  pointer-events: none;
+}
+
+/* 
+   Container principal
+    */
+
+body > section:first-of-type > div {
+  width: min(100%, 74rem);
+
+  margin-inline: auto;
+}
+
+/* 
+   Conteúdo central
+    */
+
+body > section:first-of-type > div > div {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+}
+
+/* 
+   Badge superior
+    */
+
+body > section:first-of-type > div > div > span:first-child {
+  width: fit-content;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 0.55rem;
+
+  margin: 0 0 clamp(1.5rem, 2.5vw, 2rem);
+
+  padding: 0.55rem 0.95rem;
+
+  border: 1px solid var(--hero-badge-borda);
+  border-radius: 999px;
+
+  background-color: var(--hero-badge-fundo);
+
+  color: var(--hero-badge-texto);
+
+  font-size: clamp(0.72rem, 1.2vw, 0.86rem);
+  font-weight: 600;
+  line-height: 1;
+
+  letter-spacing: -0.01em;
+
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+/* 
+   Coração do Badge
+    */
+
+body > section:first-of-type > div > div > span:first-child > i {
+  width: 0.9rem;
+  height: 0.9rem;
+
+  display: inline-grid;
+  place-items: center;
+
+  font-style: normal;
+}
+
+body > section:first-of-type > div > div > span:first-child > i::before {
+  content: '❤️';
+
+  font-size: 0.88rem;
+  line-height: 1;
+}
+
+/* 
+   Título principal
+    */
+
+body > section:first-of-type h1 {
+  max-width: 61rem;
+
+  margin: 0;
+
+  color: var(--hero-texto);
+
+  font-size: clamp(2.45rem, 5.25vw, 4.15rem);
+  font-weight: 700;
+  line-height: 1.11;
+
+  letter-spacing: -0.055em;
+
+  text-wrap: balance;
+}
+
+/* 
+   Parte colorida do título
+    */
+
+body > section:first-of-type h1 > span {
+  display: block;
+
+  background: var(--hero-gradiente-titulo);
+
+  background-clip: text;
+  -webkit-background-clip: text;
+
+  color: transparent;
+
+  -webkit-text-fill-color: transparent;
+}
+
+/* 
+   Texto de apresentação
+    */
+
+body > section:first-of-type p {
+  max-width: 49rem;
+
+  margin: clamp(1.45rem, 3vw, 2rem) 0 0;
+
+  color: var(--hero-texto-secundario);
+
+  font-size: clamp(1rem, 1.7vw, 1.23rem);
+  font-weight: 400;
+
+  line-height: 1.65;
+
+  letter-spacing: -0.018em;
+
+  text-wrap: pretty;
+}
+
+body > section:first-of-type p strong {
+  color: var(--hero-texto);
+
+  font-weight: 700;
+}
+
+/* 
+   Área do botão
+    */
+
+body > section:first-of-type > div > div > div:last-child {
+  margin-top: clamp(1.7rem, 3vw, 2.2rem);
+}
+
+/* 
+   Botão
+    */
+
+body > section:first-of-type a {
+  min-height: 3.35rem;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 0.7rem;
+
+  padding: 0.9rem 1.55rem;
+
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 0.8rem;
+
+  background-color: var(--hero-botao);
+
+  color: var(--hero-botao-texto);
+
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1;
+
+  text-decoration: none;
+
+  box-shadow: var(--hero-sombra-botao);
+
+  cursor: pointer;
+
+  transition:
+    transform 180ms ease,
+    background-color 180ms ease,
+    box-shadow 180ms ease;
+}
+
+/* 
+   Hover do botão
+    */
+
+body > section:first-of-type a:hover {
+  background-color: var(--hero-botao-hover);
+
+  transform: translateY(-3px);
+
+  box-shadow:
+    0 18px 32px rgba(25, 118, 210, 0.3),
+    0 7px 14px rgba(15, 23, 42, 0.16);
+}
+
+/* 
+   Clique no botão
+    */
+
+body > section:first-of-type a:active {
+  transform: translateY(-1px);
+}
+
+/* 
+   Foco do botão
+    */
+
+body > section:first-of-type a:focus-visible {
+  outline: 3px solid rgba(92, 160, 255, 0.55);
+
+  outline-offset: 4px;
+}
+
+/* 
+   Seta do botão
+    */
+
+body > section:first-of-type a > i {
+  width: 0.62rem;
+  height: 0.62rem;
+
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+
+  transform: rotate(45deg) translate(-1px, -1px);
+
+  transition: transform 180ms ease;
+}
+
+/* Movimento da seta */
+
+body > section:first-of-type a:hover > i {
+  transform: rotate(45deg) translate(2px, 2px);
+}
+
+/* 
+   Tablets
+    */
+
+@media (max-width: 900px) {
+  body > section:first-of-type {
+    padding: 3rem 1.25rem;
+  }
+
+  body > section:first-of-type h1 {
+    max-width: 45rem;
+
+    font-size: clamp(2.3rem, 7vw, 3.7rem);
+  }
+
+  body > section:first-of-type p {
+    max-width: 42rem;
+  }
+}
+
+/* 
+   Celulares
+    */
+
+@media (max-width: 700px) {
+  body > section:first-of-type {
+    min-height: calc(100svh - var(--altura-header));
+
+    min-height: calc(100dvh - var(--altura-header));
+
+    padding: 2.5rem 1.15rem;
+  }
+
+  body > section:first-of-type h1 {
+    max-width: 34rem;
+
+    font-size: clamp(2.15rem, 10.5vw, 3.25rem);
+
+    line-height: 1.08;
+
+    letter-spacing: -0.045em;
+  }
+
+  body > section:first-of-type p {
+    max-width: 37rem;
+
+    margin-top: 1.4rem;
+
+    font-size: 1rem;
+
+    line-height: 1.65;
+  }
+
+  body > section:first-of-type a {
+    min-height: 3.25rem;
+
+    padding-inline: 1.35rem;
+  }
+}
+
+/* 
+   Celulares pequenos
+    */
+
+@media (max-width: 430px) {
+  body > section:first-of-type {
+    padding: 2rem 1rem;
+  }
+
+  body > section:first-of-type > div > div > span:first-child {
+    padding: 0.5rem 0.75rem;
+
+    margin-bottom: 1.4rem;
+
+    font-size: 0.69rem;
+  }
+
+  body > section:first-of-type h1 {
+    font-size: clamp(2rem, 11vw, 2.75rem);
+  }
+
+  body > section:first-of-type p {
+    margin-top: 1.3rem;
+  }
+
+  body > section:first-of-type > div > div > div:last-child {
+    width: 100%;
+
+    margin-top: 1.6rem;
+  }
+
+  body > section:first-of-type a {
+    width: min(100%, 18rem);
+  }
+}
+
+/* 
+   Telas muito baixas
+    */
+
+@media (max-height: 700px) and (min-width: 701px) {
+  body > section:first-of-type {
+    padding: 2rem 1.5rem;
+  }
+
+  body > section:first-of-type > div > div > span:first-child {
+    margin-bottom: 1.25rem;
+  }
+
+  body > section:first-of-type h1 {
+    font-size: clamp(2.4rem, 4.8vw, 3.7rem);
+  }
+
+  body > section:first-of-type p {
+    margin-top: 1.25rem;
+  }
+
+  body > section:first-of-type > div > div > div:last-child {
+    margin-top: 1.5rem;
+  }
+}
+
+/* 
+   Redução de movimentos
+    */
+
+@media (prefers-reduced-motion: reduce) {
+  body > section:first-of-type a,
+  body > section:first-of-type a > i {
+    transition: none;
+  }
+}
