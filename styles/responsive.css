@@ -300,8 +300,7 @@
 
   /* Cards mobile */
 
-  .card,
-  .aluno {
+  .card {
     min-height: auto;
 
     padding: 22px 20px;
@@ -310,8 +309,7 @@
     border-radius: 14px;
   }
 
-  .card:hover,
-  .aluno:hover {
+  .card:hover {
     transform: translateY(-2px);
   }
 
@@ -430,8 +428,7 @@
     padding: 20px 16px;
   }
 
-  .card,
-  .aluno {
+  .card {
     padding: 20px 17px;
   }
 }

@@ -304,8 +304,7 @@ html[data-theme='dark'] .republica-dominicana {
    Card Paises
  */
 
-.card,
-.aluno {
+.card {
   position: relative;
   z-index: 1;
 
@@ -333,8 +332,7 @@ html[data-theme='dark'] .republica-dominicana {
     transform 250ms ease;
 }
 
-.card::before,
-.aluno::before {
+.card::before {
   content: '';
 
   position: absolute;
@@ -356,8 +354,7 @@ html[data-theme='dark'] .republica-dominicana {
   transition: opacity 250ms ease;
 }
 
-.card:hover,
-.aluno:hover {
+.card:hover {
   border-color: var(--pais-cor-borda, rgba(25, 118, 210, 0.34));
   border-left-color: var(--pais-cor-principal, var(--azul));
 
@@ -366,13 +363,11 @@ html[data-theme='dark'] .republica-dominicana {
   transform: translateY(-4px);
 }
 
-.card:hover::before,
-.aluno:hover::before {
+.card:hover::before {
   opacity: 1;
 }
 
-.card h3,
-.aluno h3 {
+.card h3 {
   margin-top: 0;
   margin-bottom: 12px;
 
@@ -384,55 +379,10 @@ html[data-theme='dark'] .republica-dominicana {
   letter-spacing: -0.015em;
 }
 
-.card p,
-.aluno p {
+.card p {
   max-width: 900px;
   margin-bottom: 0;
 
   font-size: 15.5px;
   line-height: 1.7;
-}
-
-/* 
-   Card Aluno
- */
-
-.aluno {
-  background: linear-gradient(
-    135deg,
-    var(--pais-cor-fundo-card, var(--cor-card-aluno)),
-    var(--cor-superficie)
-  );
-
-  border-color: var(--pais-cor-borda, var(--cor-borda));
-  border-left-color: var(--pais-cor-secundaria, var(--azul));
-}
-
-.aluno::before {
-  height: 5px;
-  opacity: 1;
-}
-
-.aluno h3 {
-  color: var(--pais-cor-titulo, var(--cor-texto-ativo));
-}
-
-.aluno::after {
-  content: 'Relato';
-
-  align-self: flex-start;
-
-  margin-top: auto;
-  padding: 6px 12px;
-
-  color: var(--pais-cor-titulo, var(--cor-texto-ativo));
-  background-color: var(--pais-cor-fundo, var(--cor-item-ativo));
-
-  border: 1px solid var(--pais-cor-borda, var(--cor-borda));
-  border-radius: 999px;
-
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
 }
