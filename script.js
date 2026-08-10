@@ -1,24 +1,20 @@
 const botaoTema = document.querySelector('.theme');
 const iconeTema = document.querySelector('.theme-icon');
 
-/*
-  Procura um tema salvo anteriormente no navegador.
-
-  Caso nenhum tema tenha sido salvo, o site começa
-  no tema claro.
-*/
 const temaSalvo = localStorage.getItem('tema');
 
-if (temaSalvo === 'dark') {
-  ativarTema('dark');
+if (temaSalvo) {
+  ativarTema(temaSalvo);
 } else {
-  ativarTema('light');
+  const sistemaDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+  if (sistemaDark) {
+    ativarTema('dark', false);
+  } else {
+    ativarTema('light', false);
+  }
 }
 
-/*
-  Quando o botão for clicado, verificamos qual tema
-  está ativo e trocamos para o outro.
-*/
 botaoTema.addEventListener('click', function () {
   const temaAtual = document.documentElement.dataset.theme;
 
@@ -29,15 +25,7 @@ botaoTema.addEventListener('click', function () {
   }
 });
 
-/*
-  Esta função é responsável por:
-
-  1. Alterar o tema do HTML;
-  2. Trocar o ícone;
-  3. Atualizar o texto acessível do botão;
-  4. Salvar a escolha no navegador.
-*/
-function ativarTema(tema) {
+function ativarTema(tema, salvar = true) {
   document.documentElement.dataset.theme = tema;
 
   if (tema === 'dark') {
@@ -52,5 +40,7 @@ function ativarTema(tema) {
     botaoTema.setAttribute('title', 'Ativar tema escuro');
   }
 
-  localStorage.setItem('tema', tema);
+  if (salvar) {
+    localStorage.setItem('tema', tema);
+  }
 }
