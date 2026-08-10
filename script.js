@@ -1,20 +1,25 @@
 const botaoTema = document.querySelector('.theme');
 const iconeTema = document.querySelector('.theme-icon');
 
+const preferenciaSistema = window.matchMedia('(prefers-color-scheme: dark)');
+
 const temaSalvo = localStorage.getItem('tema');
 
-if (temaSalvo) {
-  ativarTema(temaSalvo);
-} else {
-  const sistemaDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+/*
+  Se o usuário já escolheu um tema manualmente,
+  usamos essa preferência.
 
-  if (sistemaDark) {
-    ativarTema('dark', false);
-  } else {
-    ativarTema('light', false);
-  }
+  Caso contrário, usamos o tema do dispositivo.
+*/
+if (temaSalvo === 'dark' || temaSalvo === 'light') {
+  ativarTema(temaSalvo, false);
+} else {
+  ativarTema(preferenciaSistema.matches ? 'dark' : 'light', false);
 }
 
+/*
+  Troca manual de tema.
+*/
 botaoTema.addEventListener('click', function () {
   const temaAtual = document.documentElement.dataset.theme;
 
@@ -25,6 +30,23 @@ botaoTema.addEventListener('click', function () {
   }
 });
 
+/*
+  Detecta mudanças no tema do dispositivo.
+
+  Só altera automaticamente se o usuário ainda
+  não tiver escolhido um tema manualmente.
+*/
+preferenciaSistema.addEventListener('change', function (event) {
+  const temaEscolhido = localStorage.getItem('tema');
+
+  if (!temaEscolhido) {
+    ativarTema(event.matches ? 'dark' : 'light', false);
+  }
+});
+
+/*
+  Ativa o tema.
+*/
 function ativarTema(tema, salvar = true) {
   document.documentElement.dataset.theme = tema;
 
