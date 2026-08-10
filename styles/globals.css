@@ -139,3 +139,43 @@ img {
   display: block;
   max-width: 100%;
 }
+
+@media (prefers-color-scheme: dark) {
+  html:not([data-theme]) {
+    color-scheme: dark;
+
+    --cor-fundo: #0f1115;
+    --cor-superficie: #181c23;
+    --cor-sidebar: #15181e;
+
+    --cor-texto: #f2f5f8;
+    --cor-texto-secundario: #c2cad4;
+    --cor-texto-suave: #929dac;
+
+    --cor-borda: #2c333d;
+    --cor-borda-forte: #3a4451;
+
+    --cor-footer: #15191f;
+    --cor-botao: #20252d;
+
+    --cor-card-destaque: #172637;
+    --cor-card-aluno: #14263a;
+
+    --sombra-header: 0 8px 30px rgba(0, 0, 0, 0.42);
+    --sombra-card: 0 8px 24px rgba(0, 0, 0, 0.22);
+    --sombra-card-hover: 0 16px 38px rgba(0, 0, 0, 0.38);
+
+    --cor-item-ativo: #162f49;
+    --cor-texto-ativo: #80bfff;
+
+    --cor-item-hover: #162f49;
+    --cor-texto-hover: #80bfff;
+
+    --cor-sidebar-mobile: rgba(24, 28, 35, 0.8);
+    --cor-borda-mobile: rgba(255, 255, 255, 0.12);
+    --cor-hover-mobile: rgba(74, 144, 226, 0.22);
+
+    --sombra-sidebar-mobile:
+      0 14px 36px rgba(0, 0, 0, 0.48), 0 3px 10px rgba(0, 0, 0, 0.25);
+  }
+}
