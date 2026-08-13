@@ -1,0 +1,586 @@
+/*
+  ALUNOS IMIGRANTES
+  Seção dedicada aos alunos imigrantes da comunidade escolar.
+*/
+
+.alunos-imigrantes {
+  position: relative;
+
+  width: 100%;
+  padding: 58px 24px 92px;
+
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      circle at 50% 0%,
+      color-mix(in srgb, var(--azul) 9%, transparent) 0%,
+      transparent 34%
+    ),
+    var(--cor-fundo);
+
+  color: var(--cor-texto);
+
+  transition:
+    background-color 250ms ease,
+    color 250ms ease;
+}
+
+/*
+  Pequeno detalhe visual que liga
+  a seção anterior com esta.
+*/
+
+.alunos-imigrantes::before {
+  content: '';
+
+  position: absolute;
+  top: 0;
+  left: 50%;
+
+  width: min(520px, 65%);
+  height: 1px;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    color-mix(in srgb, var(--azul) 60%, transparent),
+    color-mix(in srgb, var(--verde) 60%, transparent),
+    transparent
+  );
+
+  transform: translateX(-50%);
+}
+
+/*
+  Luz suave decorativa no fundo
+*/
+
+.alunos-imigrantes::after {
+  content: '';
+
+  position: absolute;
+  top: 40px;
+  left: 50%;
+
+  width: 440px;
+  height: 220px;
+
+  border-radius: 50%;
+
+  background: color-mix(in srgb, var(--azul) 7%, transparent);
+
+  filter: blur(90px);
+
+  transform: translateX(-50%);
+
+  pointer-events: none;
+}
+
+.alunos-imigrantes__container {
+  position: relative;
+  z-index: 1;
+
+  width: min(1080px, 100%);
+  margin: 0 auto;
+}
+
+/*
+  Cabeçalho
+*/
+
+.alunos-imigrantes__cabecalho {
+  max-width: 720px;
+
+  margin: 0 auto 58px;
+
+  text-align: center;
+}
+
+.alunos-imigrantes__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  margin-bottom: 18px;
+  padding: 8px 14px;
+
+  border: 1px solid var(--cor-borda);
+  border-radius: 999px;
+
+  background: var(--cor-card-destaque);
+  color: var(--azul);
+
+  box-shadow: 0 6px 18px color-mix(in srgb, var(--azul) 10%, transparent);
+
+  font-size: 0.8rem;
+  font-weight: 700;
+
+  transition:
+    transform 220ms ease,
+    border-color 220ms ease,
+    box-shadow 220ms ease;
+}
+
+.alunos-imigrantes__badge:hover {
+  transform: translateY(-3px) rotate(-1deg);
+
+  border-color: color-mix(in srgb, var(--azul) 45%, var(--cor-borda));
+
+  box-shadow: 0 10px 24px color-mix(in srgb, var(--azul) 17%, transparent);
+}
+
+.alunos-imigrantes__cabecalho h2 {
+  margin: 0;
+
+  color: var(--cor-texto);
+
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  line-height: 1.15;
+  letter-spacing: -0.04em;
+}
+
+.alunos-imigrantes__cabecalho p {
+  max-width: 650px;
+
+  margin: 18px auto 0;
+
+  color: var(--cor-texto-secundario);
+
+  font-size: 1rem;
+  line-height: 1.75;
+}
+
+/*
+  Lista de alunos
+*/
+
+.alunos-imigrantes__lista {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: start;
+
+  gap: 38px;
+
+  width: 100%;
+  max-width: 980px;
+
+  margin: 0 auto;
+}
+
+/*
+  Cada aluno ganha uma pequena diferença
+  de posição para não parecer tão "engessado".
+*/
+
+.aluna {
+  position: relative;
+
+  min-width: 0;
+
+  text-align: center;
+
+  transition: transform 300ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.aluna:nth-child(1) {
+  transform: rotate(-1.2deg);
+}
+
+.aluna:nth-child(2) {
+  transform: translateY(-12px) rotate(0.8deg);
+}
+
+.aluna:nth-child(3) {
+  transform: rotate(1.2deg);
+}
+
+/*
+  Foto
+*/
+
+.aluna__foto-container {
+  position: relative;
+
+  width: 100%;
+  aspect-ratio: 4 / 5;
+
+  border: 1px solid var(--cor-borda);
+  border-radius: 24px;
+
+  background: var(--cor-superficie);
+
+  box-shadow: var(--sombra-card);
+
+  isolation: isolate;
+
+  transition:
+    transform 320ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    box-shadow 320ms ease,
+    border-color 320ms ease;
+}
+
+/*
+  Moldura colorida que aparece no hover
+*/
+
+.aluna__foto-container::before {
+  content: '';
+
+  position: absolute;
+  inset: -2px;
+
+  z-index: -1;
+
+  border-radius: 26px;
+
+  background: linear-gradient(
+    135deg,
+    var(--azul),
+    transparent 45%,
+    var(--verde)
+  );
+
+  opacity: 0;
+
+  transform: scale(0.97);
+
+  transition:
+    opacity 300ms ease,
+    transform 300ms ease;
+}
+
+/*
+  Gradiente interno no final da foto
+*/
+
+.aluna__foto-container::after {
+  content: '';
+
+  position: absolute;
+  inset: 0;
+
+  z-index: 1;
+
+  border-radius: inherit;
+
+  background: linear-gradient(to bottom, transparent 60%, rgba(0, 0, 0, 0.18));
+
+  pointer-events: none;
+
+  opacity: 0.65;
+
+  transition: opacity 300ms ease;
+}
+
+.aluna__foto {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  border-radius: inherit;
+
+  transition:
+    transform 420ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    filter 300ms ease;
+}
+
+/*
+  Bandeira
+*/
+
+.aluna__nacionalidade {
+  position: absolute;
+  z-index: 4;
+
+  left: 50%;
+  bottom: 0;
+
+  display: grid;
+  place-items: center;
+
+  width: 68px;
+  height: 68px;
+
+  border: 4px solid var(--cor-fundo);
+  border-radius: 50%;
+
+  background: var(--cor-superficie);
+
+  box-shadow:
+    0 8px 20px rgba(0, 0, 0, 0.16),
+    0 0 0 1px var(--cor-borda);
+
+  font-size: 2rem;
+  line-height: 1;
+
+  transform: translate(-50%, 50%);
+
+  transition:
+    transform 320ms cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 300ms ease,
+    background-color 250ms ease;
+}
+
+/*
+  Informações
+*/
+
+.aluna__informacoes {
+  padding-top: 48px;
+
+  transition: transform 280ms ease;
+}
+
+.aluna__informacoes h3 {
+  margin: 0;
+
+  color: var(--cor-texto);
+
+  font-size: 1.05rem;
+  font-weight: 700;
+
+  transition:
+    color 250ms ease,
+    transform 250ms ease;
+}
+
+.aluna__informacoes p {
+  margin: 6px 0 0;
+
+  color: var(--cor-texto-suave);
+
+  font-size: 0.88rem;
+  font-weight: 500;
+
+  transition: color 250ms ease;
+}
+
+/*
+  Interações
+*/
+
+@media (hover: hover) {
+  .aluna:hover {
+    z-index: 5;
+
+    transform: translateY(-13px) rotate(0deg);
+  }
+
+  .aluna:hover .aluna__foto-container {
+    border-color: transparent;
+
+    box-shadow:
+      0 22px 45px rgba(0, 0, 0, 0.2),
+      0 8px 24px color-mix(in srgb, var(--azul) 14%, transparent);
+  }
+
+  .aluna:hover .aluna__foto-container::before {
+    opacity: 1;
+
+    transform: scale(1);
+  }
+
+  .aluna:hover .aluna__foto-container::after {
+    opacity: 0.35;
+  }
+
+  .aluna:hover .aluna__foto {
+    transform: scale(1.045);
+
+    filter: saturate(1.07);
+  }
+
+  .aluna:hover .aluna__nacionalidade {
+    transform: translate(-50%, 50%) scale(1.13) rotate(6deg);
+
+    box-shadow:
+      0 12px 26px rgba(0, 0, 0, 0.2),
+      0 0 0 5px color-mix(in srgb, var(--azul) 10%, transparent);
+  }
+
+  .aluna:hover .aluna__informacoes {
+    transform: translateY(3px);
+  }
+
+  .aluna:hover .aluna__informacoes h3 {
+    color: var(--azul);
+
+    transform: translateY(-1px);
+  }
+
+  /*
+    Quando um aluno recebe hover,
+    os outros ficam discretamente menos destacados.
+  */
+
+  .alunos-imigrantes__lista:has(.aluna:hover) .aluna:not(:hover) {
+    opacity: 0.72;
+
+    transform: scale(0.97);
+  }
+
+  .alunos-imigrantes__lista:has(.aluna:hover) .aluna:not(:hover) .aluna__foto {
+    filter: saturate(0.75);
+  }
+}
+
+/*
+  Mensagem final da seção
+*/
+
+.alunos-imigrantes__mensagem {
+  position: relative;
+
+  width: fit-content;
+
+  margin: 70px auto 0;
+  padding: 14px 20px;
+
+  border: 1px solid var(--cor-borda);
+  border-radius: 999px;
+
+  background: var(--cor-superficie);
+
+  color: var(--cor-texto-secundario);
+
+  box-shadow: var(--sombra-card);
+
+  font-size: 0.92rem;
+  font-weight: 600;
+  text-align: center;
+
+  transition:
+    transform 220ms ease,
+    border-color 220ms ease,
+    box-shadow 220ms ease;
+}
+
+.alunos-imigrantes__mensagem::before {
+  content: '✦';
+
+  margin-right: 8px;
+
+  color: var(--azul);
+}
+
+@media (hover: hover) {
+  .alunos-imigrantes__mensagem:hover {
+    transform: translateY(-3px);
+
+    border-color: var(--cor-borda-forte);
+
+    box-shadow: var(--sombra-card-hover);
+  }
+}
+
+/*
+  Tablet
+*/
+
+@media (max-width: 850px) {
+  .alunos-imigrantes {
+    padding: 54px 24px 80px;
+  }
+
+  .alunos-imigrantes__lista {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    max-width: 680px;
+  }
+
+  .aluna:nth-child(1),
+  .aluna:nth-child(2),
+  .aluna:nth-child(3) {
+    transform: none;
+  }
+
+  .aluna:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+
+    width: calc(50% - 19px);
+
+    justify-self: center;
+  }
+}
+
+/*
+  Mobile
+*/
+
+@media (max-width: 560px) {
+  .alunos-imigrantes {
+    padding: 48px 20px 68px;
+  }
+
+  .alunos-imigrantes__cabecalho {
+    margin-bottom: 48px;
+  }
+
+  .alunos-imigrantes__cabecalho h2 {
+    font-size: clamp(1.7rem, 8vw, 2.15rem);
+  }
+
+  .alunos-imigrantes__cabecalho p {
+    font-size: 0.94rem;
+    line-height: 1.7;
+  }
+
+  .alunos-imigrantes__lista {
+    grid-template-columns: 1fr;
+
+    max-width: 340px;
+
+    gap: 52px;
+  }
+
+  .aluna:last-child:nth-child(odd) {
+    grid-column: auto;
+
+    width: 100%;
+  }
+
+  .aluna__foto-container {
+    border-radius: 22px;
+  }
+
+  .aluna__nacionalidade {
+    width: 62px;
+    height: 62px;
+
+    font-size: 1.8rem;
+  }
+
+  .aluna__informacoes {
+    padding-top: 43px;
+  }
+
+  .alunos-imigrantes__mensagem {
+    max-width: 90%;
+
+    margin-top: 58px;
+
+    border-radius: 18px;
+
+    line-height: 1.55;
+  }
+}
+
+/*
+  Respeita usuários que preferem
+  menos animações.
+*/
+
+@media (prefers-reduced-motion: reduce) {
+  .aluna,
+  .aluna__foto-container,
+  .aluna__foto,
+  .aluna__nacionalidade,
+  .aluna__informacoes,
+  .aluna__informacoes h3,
+  .alunos-imigrantes__badge,
+  .alunos-imigrantes__mensagem {
+    transition: none;
+  }
+}
